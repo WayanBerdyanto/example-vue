@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Mahasiswas;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get("/test-me", function () {
+    return 'Hello from Laravel!';
+});
+
+Route::get('/users', function () {
+    $users = Mahasiswas::all();  // Fetch all users from the 'users' table
+    return response()->json($users);  // Return as a JSON response
 });
